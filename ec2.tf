@@ -12,7 +12,7 @@ resource "aws_instance" "wordpress" {
     connection {
       host = self.public_ip
       user = "ec2-user"
-      private_key = file("/root/devops.pem")
+      private_key = file("/tmp/devops.pem")
     }
 
     inline = [
