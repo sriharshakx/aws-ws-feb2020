@@ -18,8 +18,8 @@ resource "aws_instance" "wordpress" {
     inline = [
       "sudo yum install git -y ",
       "sudo amazon-linux-extras install ansible2 -y",
-      "cd /home/ec2-user && git clone https://github.com/bhiravabhatla/aws-compute-tutorials.git",
-      "cd /home/ec2-user/aws-compute-tutorials/ALB/ansible && sudo ansible-playbook -i local wordpress.yml --skip-tags mysql"
+      "echo localhost >/tmp/hosts",
+      "sudo ansible-pull -i /tmp/hosts -U  https://github.com/bhiravabhatla/aws-compute-tutorials.git ALB/ansible/wordpress.yml --skip-tags mysql"
     ]
   }
 }
