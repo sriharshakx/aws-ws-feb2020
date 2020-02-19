@@ -15,8 +15,7 @@ resource "aws_instance" "wordpress" {
     }
 
     inline = [
-      "sudo yum install git -y ",
-      "sudo amazon-linux-extras install ansible2 -y",
+      "sudo yum install ansible -y ",
       "echo localhost >/tmp/hosts",
       "sudo ansible-pull -i /tmp/hosts -U  https://github.com/bhiravabhatla/aws-compute-tutorials.git ALB/ansible/wordpress.yml --skip-tags mysql"
     ]
