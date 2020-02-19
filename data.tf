@@ -1,13 +1,5 @@
-data "aws_ami" "amazon-linux-2" {
-  most_recent = true
-  filter {
-    name   = "owner-alias"
-    values = ["amazon"]
-  }
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm*"]
-  }
-
-  owners = ["amazon"]
+data "aws_ami" "ami-public" {
+  most_recent      = true
+  owners           = [var.AMI_ACCOUNT]
+  name_regex       = "^Centos-7*"
 }

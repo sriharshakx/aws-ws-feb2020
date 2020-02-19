@@ -1,8 +1,7 @@
 resource "aws_instance" "wordpress" {
-  ami = data.aws_ami.amazon-linux-2.id
+  ami = data.aws_ami.ami-public.id
   instance_type = "t2.small"
   vpc_security_group_ids = [aws_security_group.public-ssh.id, aws_security_group.public-web.id]
-  key_name = var.key_name
   subnet_id = element(aws_subnet.public.*.id, 0)
   tags = {
     Name = "wordpress-0-instance"
@@ -11,8 +10,8 @@ resource "aws_instance" "wordpress" {
   provisioner "remote-exec" {
     connection {
       host = self.public_ip
-      user = "ec2-user"
-      private_key = file("/tmp/devops.pem")
+      user = "root"
+      password = "DevOps321"
     }
 
     inline = [
