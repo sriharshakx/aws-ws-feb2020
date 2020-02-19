@@ -9,5 +9,5 @@ data "aws_ami" "amazon-linux-2" {
     values = ["amzn2-ami-hvm*"]
   }
 
-  owners = []
+  owners = ["amazon"]
 }

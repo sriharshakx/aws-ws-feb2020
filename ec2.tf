@@ -24,4 +24,3 @@ resource "aws_instance" "wordpress" {
   }
 }
 
-
