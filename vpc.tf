@@ -10,6 +10,7 @@ resource "aws_subnet" "public" {
   count = 2
   cidr_block = cidrsubnet(var.cidr, 8, count.index)
   vpc_id = aws_vpc.vpc.id
+  map_public_ip_on_launch = true
   tags = {
     Name = "Public-Subnet-${count.index+1}"
   }
